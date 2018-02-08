@@ -11,7 +11,7 @@ exports.config = {
     );
     global.initiator = require("./utilities/initiator");
     global.el = require("./utilities/elements");
-    global.cred = require('../../../../../inputs/credentials');
+    global.cred = require('../../../../../inputs/credentials/credentials.js');
   },
   // Capabilities to be passed to the webdriver instance.
   capabilities: {
