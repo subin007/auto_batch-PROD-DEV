@@ -1,3 +1,3 @@
 C:
-cd C:\auto_batch_original\automation_source\express-src
+cd C:\auto_batch\automation_source\express-src
 node listcreator.js

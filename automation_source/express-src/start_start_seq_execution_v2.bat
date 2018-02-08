@@ -1,3 +1,3 @@
 C:
-cd C:\auto_batch_original\automation_source\express-src\public\assets\core
+cd C:\auto_batch\automation_source\angular-src\src\assets\core
 start start_sequential_execution.bat
