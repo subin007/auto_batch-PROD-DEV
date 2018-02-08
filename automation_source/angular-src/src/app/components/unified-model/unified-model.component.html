@@ -1,0 +1,77 @@
+<div class="container mt-4 p-4" style="border: 1px solid rgba(0,0,0,.125);">
+  <div class="d-flex justify-content-center p-3" *ngIf="displayListRefresh">
+    <div class="card bg-sun_flower" style="max-width: 30rem;cursor: pointer;" (click)="getListOfInputFiles()">
+      <div class="card-body">
+        <h4 style="display:inline-block">
+          <b>Refresh to get the updated list  .</b>
+        </h4>
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" class="feather feather-refresh-cw">
+          <polyline points="23 4 23 10 17 10"></polyline>
+          <polyline points="1 20 1 14 7 14"></polyline>
+          <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+        </svg>
+      </div>
+    </div>
+
+  </div>
+
+    <table class="table" *ngIf="true">
+      <thead class="thead-light">
+        <tr>
+          <th>#</th>
+          <th>Input Files</th>
+          <th>Reports</th>
+          <th>Completed At</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let file of inputs; index as i">
+          <th scope="row">{{i + 1}}</th>
+          <td>{{file}}</td>
+          <td style="cursor: pointer;" [routerLink]="['report', file]" *ngIf="reportStatus[i].status === 'completed' || reportStatus[i].status === 'running' || reportStatus[i].status === 'forcefully_closed'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+          </td>
+          <td *ngIf="reportStatus[i].status === 'not_started'">Pending</td>
+          <td *ngIf="reportStatus[i].status === 'forcefully_closed'">Forced Closed</td>
+          <td *ngIf="reportStatus[i].status === 'not_started'"> </td>
+          <td *ngIf="reportStatus[i].status === 'completed' ">{{reportStatus[i].completedAt | date: 'h:mm a'}}</td>
+          <td *ngIf="reportStatus[i].status === 'running'">Running...</td>
+        </tr>
+      </tbody>
+    </table>
+  <hr>
+  <div class="d-flex flex-wrap justify-content-center mt-5" *ngIf="displayListRefresh">
+
+    <h4>If CONFIRMED with the above listed files <small> <i>(inside "C:\auto_batch\inputs" folder)</i></small></h4>
+    <h4>
+      <i>You can start execution by clicking on start execution button</i>
+    </h4>
+
+  </div>
+
+  <div class="d-flex justify-content-center">
+    <button type="button"  *ngIf="displayListRefresh" class="btn btn-dark m-4" style="cursor: pointer;" (click)="onStartExecutionClick()">Start Execution</button>
+    <h4 *ngIf="reportStatus[reportStatus.length - 1].completedAt && !displayListRefresh">Completed all executions at {{reportStatus[reportStatus.length - 1].completedAt | date: 'h:mm a'}}</h4>
+  </div>
+  <div class="d-flex justify-content-center" *ngIf="!displayListRefresh">
+        <h3>****Remember to save before doing restart</h3>
+</div>
+  <div class="d-flex flex-wrap justify-content-center mt-5" *ngIf="!displayListRefresh">
+        <h4>If you want to stop the execution, close the "automation cmd" </h4>
+          <h4>& only when confirmed that all have closed, </h4><br>
+          <i><h4>you may go ahead and click on Restart button</h4></i>
+        
+  </div>
+  <div class="d-flex justify-content-center">
+    <button type="button" *ngIf="!displayListRefresh" class="btn btn-outline-danger m-4" style="cursor: pointer;" (click)="onRestartClick()">Restart</button>
+  </div>
+  
+</div>

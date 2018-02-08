@@ -1,0 +1,126 @@
+  nav {
+
+  font: 13px/20px "Lucida Grande", Tahoma, Verdana, sans-serif;
+  color: #404040;
+  height: 26px;
+  margin-top: 15px;
+}
+
+  nav ul {
+
+  border-width: 1px;
+  border-style: solid;
+  border-color: #d5d5d5 #d2d2d2 #cdcdcd;
+  border-radius: 3px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  vertical-align: middle;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+}
+
+  nav li {
+
+  float: left;
+  border-left: 1px solid #d2d2d2;
+}
+
+  nav li:first-child {
+
+  border-left: 0;
+}
+
+  nav li:first-child a {
+
+  border-radius: 3px 0 0 3px;
+}
+
+  nav li:last-child a {
+
+  border-radius: 0 3px 3px 0;
+}
+
+  nav a {
+
+  display: block;
+  position: relative;
+  padding: 0 14px;
+  height: 26px;
+  line-height: 26px;
+  font-size: 11px;
+  font-weight: bold;
+  color: #666;
+  text-decoration: none;
+  text-shadow: 0 1px white;
+  background: #fafafa;
+  background-image: _linear-gradient_legacy(top, #fcfcfc, #f0f0f0...);
+  box-shadow: inset 0 0 0 1px #fafafa;
+}
+
+nav a:hover {
+  color: #333;
+  z-index: 2;
+  box-shadow: inset 0 0 0 1px #fafafa, 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+nav li.active a,
+nav a:active {
+  color: #333;
+  background: white;
+  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+nav .badge {
+  display: block;
+  position: absolute;
+  top: -12px;
+  right: 3px;
+  line-height: 16px;
+  height: 16px;
+  padding: 0 5px;
+  font-family: Arial, sans-serif;
+  color: white;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.25);
+  border: 1px solid;
+  border-radius: 10px;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.3), 0 1px 1px rgba(0, 0, 0, 0.08);
+}
+
+nav .badge {
+  background: #007cbb;
+  background-image: _linear-gradient_legacy(top, #09acff, #007cbb...);
+}
+
+nav .badge.green {
+  background: #318700;
+  background-image: _linear-gradient_legacy(top, #4dd400, #318700...);
+}
+
+nav .badge.yellow {
+  background: #faba3e;
+  background-image: _linear-gradient_legacy(top, #fcd589, #faba3e...);
+}
+
+nav .badge.red {
+  background: #d04429;
+  background-image: _linear-gradient_legacy(top, #e17965, #d04429...);
+}
+
+.display-4{
+  font-size: 2.0rem;
+  font-weight: 500;
+  color: #5c5c5c;
+}
+
+.mt-7{
+  margin-top: 90px;
+}
+
+.failurebox{
+  position: relative;
+  left: 50%;
+  
+}
+
+

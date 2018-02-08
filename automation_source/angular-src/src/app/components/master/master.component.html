@@ -1,0 +1,123 @@
+<div class="container">
+  <nav class="navbar navbar-dark bg-dark d-flex justify-content-center">
+    <i class="navbar-brand" href="#!">Welcome !!</i>
+  </nav>
+  <div class="button teal">
+    <h5 class="display-2 text-center">KVP Report Utility</h5>
+  </div>
+
+  <div id="updateserver" *ngIf="true" style="margin-top: 80px">
+    <h5 class="display-2 text-center">Update Server</h5>
+    <p class="display-4 text-center" style="font-size: 2.5rem">Click on this button to update the server, (do it only once in a day)</p>
+    <div class="d-flex justify-content-center">
+      <ul class="buttonChest" (click)="onUpdateServerClick()">
+        <li>
+          <div class="button teal">Update Server</div>
+          <span class="clicks" style="padding-top: 10px">First Step</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="startserver" *ngIf="true" style="margin-top: 80px">
+    <h5 class="display-2 text-center">Start Server</h5>
+    <p class="display-4 text-center" style="font-size: 2.5rem">Click on this button to start the server, (do it only once in a day)</p>
+    <div class="d-flex justify-content-center">
+      <ul class="buttonChest" (click)="onStartServerClick()">
+        <li>
+          <div class="button chalk">Start Server</div>
+          <span class="clicks" style="padding-top: 10px">Second Step</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="getinputlist" *ngIf="true">
+    <h5 class="display-3 text-center">Get list of all the input files for automation</h5>
+    <p class="display-4 text-center" style="font-size: 2.0rem; font-weight: 400;">Files shall be ordered in the sequence of execution</p>
+    <div class="d-flex justify-content-center">
+      <ul class="buttonChest" (click)="onStartAutomationClick()">
+        <li>
+          <div class="button ocean">Start Automation</div>
+          <span class="clicks" style="padding-top: 10px">Execute in the below given order</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <table class="table" *ngIf="true">
+    <thead class="thead-light">
+      <tr>
+        <th>#</th>
+        <th>Input Files</th>
+        <th>Reports</th>
+        <th>Completed At</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>data.json</td>
+        <td style="cursor: pointer;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+        </td>
+        <td>2:30 PM</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Starting the execution of Delays.json</td>
+        <td>Running</td>
+        <td></td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Starting the execution of Params.json</td>
+        <td>Pending</td>
+        <td></td>
+      </tr>
+      <tr>
+        <th scope="row">4</th>
+        <td>Starting the execution of Attributes.json</td>
+        <td>Pending</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <table class="table" *ngIf="true">
+    <thead class="thead-light">
+      <tr>
+        <th>#</th>
+        <th>Input Files</th>
+        <th>Reports</th>
+        <th>Completed At</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let file of inputs; index as i">
+        <th scope="row">{{i + 1}}</th>
+        <td>{{file}}</td>
+        <!-- <td style="cursor: pointer;" [routerLink]="['report', file]">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+        </td>
+        <td>Pending</td> -->
+        <!-- <td>{{}}</td> -->
+        <td>2:30 PM</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

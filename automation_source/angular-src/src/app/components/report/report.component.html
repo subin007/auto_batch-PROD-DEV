@@ -1,0 +1,66 @@
+<report-details [passCount]="passedResultsCount" [failCount]="failedResultsCount"></report-details>
+<div class="row">
+  <div class="col-12 mt-7 pt-2 px-5">
+    <table class="table table-bordered">
+      <thead class="thead-light" *ngIf="specSprint.length !== 0">
+        <tr>
+          <th>Test Step No. </th>
+          <th>Test Attribute</th>
+          <th>Operation</th>
+          <th>Result</th>
+          <th>Actual Value Present</th>
+          <th>Failure Reason (if any)</th>
+          <th>Tested at time</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let spec of specSprint; index as i">
+        <tr class="justify-content-center" *ngIf="displayTestcaseName(spec.testcaseName,i)">
+          <td colspan="7" class="bg-silver">
+            <span class="display-4">{{spec.testcaseName}}</span>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">{{i + 1}}</th>
+          <td *ngIf="(spec.code !== 'mg')&&(spec.code !=='msv')">{{spec.attributeName}}</td>
+          <td *ngIf="(spec.code === 'mg')||(spec.code ==='msv')">
+            <ul class="list-group">
+              <li class="list-group-item" *ngFor="let singleAttr of spec.attributeName">{{singleAttr}}</li>
+            </ul>
+          </td>
+          <td>
+            <div class="card">
+              <div class="card-body">{{operationStatements(spec.code,spec.focusedExpectation)}}</div>
+            </div>
+          </td>
+          <td>
+            <img *ngIf="(spec.passResults !== 0) && (spec.failResults.length === 0)" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALhSURBVFhH7ZjJbhNBEIYtwZGdN0A8DEskiMFOIsQ9ElwRb0DCIi4sTxAOeCMOhEU+GBHj6R4i5YpxABG5x0EgHgCQmqpOjWS7a4ZZc/Iv/ZLj6ar6MnbVdLsw1VQhEj/FETmUM46SN4USjx1PPEGb1/jeUJzHNbR8f9TW7YPOwJkXnmgJJf8KT+pQK/nH8eQbZ+DOYSylyUdwt0pwZ76wIFGsxLbjOZcoXXaSA3kSCjStgkmtRH3r69YxSp9O3Z3uaUeJz2yhNIa7ibmpTDJhAvgO7bIFsjDkTgwJgScgSd9Kmr37iT5u6LxVJlkuhtHUoLLRhN3KJcrTjucWqXy4zJzLoynI9z7c17VPDe5aP9KchO5aYIIz8bK8o2eeXdSXn88BZN263h3KMmEEC6f+ZGAW9uF8L7y4qjuD9+PrlHhFGLw2f20ejfT4iulJuNm1kq70avZaeCx2fnQOE44t83CfDErpJXccrtgs83BkaJazhGPL7ECYoKSOC2c8FDcIxxZ8Bx6xQSO2vjcBTgQHhpv0kHBsmb0cE+T77c47vdi6ppfkbfa676RwexYrhGMrDNCH84veCoBcdu9acE97VXYt7xDAsI+40V813TdafBIyPRw2iXxAOLb+1yTVXt2GFHuQWcAZhzUJ7HbPsUEjRsjiWnkMZrF1fezv2WYpGRy468kzhGMLDzhRBjUHmQUc7AF+hw5qFDTKay540jUGMg2csRIvCSNYePpigxmPQqaGA+M2jzCChVse+E+2uQScEXJ+/YqufEwHB59cr6IrBwgjXLh55JIEOerTJdRKXKDy0YTbcDZRDobxVqWy0bXxbeM4BO/LoQm3eVQ2nvI+dsJYGWZ0No7eNDHcd3fdU1QmnfDcCpB1pkgyZ/nTx6jwh580dxNHSexujSucVWaYwwEHzxAcyJhxjZLreGKLPOeyEj438QyBOxAAhq2aWDHG1/AeXmt/bx+i5VNNZatQ+AdUhQH1OiH17QAAAABJRU5ErkJggg==">
+            <img *ngIf="spec.failResults.length !== 0 && spec.passResults >= 0" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAOsSURBVFhH3VhLTxNRFJ5El/ozfCQm6poNGaZ32qLRhFcCGAF/QKnQ6oZHeGwg4fE73BOXbkraKRskpIImgJCwkUfiTMvCmvF8w4FSvG1n2mmtfMmXNNN7z/l6555XlRuLhBBPk4HA6Foo9NEIBvdSQmSTmpYH8dkIhXbxXVKIkWRb22PeVl8kWlrukvN3aV0/WGtvN7eHhs4OYzH7ZGrKtubm7NzCgkN8xrPDeNzeHhw8WwuHTeyhvfFPra132Jx/IKO3U7oeM4QwM/392aOJCftsack9Fxfto/FxO9PXZ5Edk055BDbZfG1Y1fWHqWDw20ZPj3k6MyMX4IGwsdHZaRq6vpVQ1QfspjqkNO0lGTIPotHfMme1EDbpNK2kqr5gd95A4t7Q5c+eTE5KHfjBY7JNPnLk6zW7dQfn5EicH6+0Ek9nZyEy6/okcefwWo+9BkINhC8EYMU7iciidPC1HneuEveHh/N0kl/KRjdSCaJVZqARXKfopuv1luUUAwmUjvmnq3u3vCx/Xo4u9sA3NEALyyrACATeIwnLNhaRHOUzGTu/uSn/XkKsxR43IjO9vVYqEIixrAIoMA6Q7WWbLsniLuBGJNZcwI1IaKDC8J1lnSOlqk9QW1GSZJuu8qpDoJxIL2svSRpQuw1VfcTyFAVdCYq6dIOEbhxXJY5JWnL0mqMsT1HQFqErkS0uxXICahEHQks6GFxheYqSpt4N7ZFscTnKhNQqDkR5JU07LM95xVlrfl66uBKvC7qKasSB6CfRlrE8EkhdcM5FgJSiTGS14sAsNb10B3+xvP9BYLO/4qYPkqZLM6Oj6BELaaYZEzVpGmZ556UuHQ5bzVLqoKWo1AFUoPcrjpMNaBZ+jI3Z1LjssawC0OJgbpVtKiKLdHUaTKx1Iw5Eu4Urx7IKQJOI0P6XDevJ9HTphhXAxI+hWra57qS7t97RYRYFx3VgYKGhaXs/Emn80BSJOEPTh+7uWyxHDox+mPgbPXbCp6Fp91lGeWCIdgZ3GqplBv2k58H9AvRrBmhjrp4nifmDUkouKcQrdusNq5r2nNKPRUO1v3eSAsK5c0JgDn7G7qoDRdU9XN7PXV3mKaUBqUMPhA1EK51cBrbZTW1AdGPiR45CMnfGUy/9I61FhUAShg2kEthk8/7BSeZCxFGKMBqiqDt/AVN75PwFTEJA5y9geobvtgYGcvwX8C6qVckk7DdQzMlhFNMXcQd3FZ05iM94RldjBWv+Kvw3B4ryBznM9gVFpzaoAAAAAElFTkSuQmCC">
+            <!-- <img *ngIf="(spec.passResults.length !== 0) && (spec.failResults.length !== 0)" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKbSURBVFhH7ZjPaxNBFMcD9ehv/4NSs5tAUWihIIr2pDZioUWtf0goePDktSdt/4CSerC01IO2xYNgtSQbxYsgYutN9NxjU2b8vvEphX07O5mdhh7yhQ9Zkpn3vnmTebuTUl99WaSaQ6dVK74DZlUSL4AlZsG814xrNIaH90b67fUTMDCjWtEbvB7oJNY2VBJ1wKZKKg9oLoc5GulWdA+mfkhGXEBVd2B2msOFEwJfAC+lpD6g+iv686WzHL6Y1KfqEMztSomKYKqJ2JzGT8ZcEv2WEoSAYnubVNvV81iK71LgkJgcPsuNJViTAtrYe1c1SJ/ZQCVXOa2baLdKgWx8aIzoq7W7hu3GqDjGBrrDFKe3y/Q5j03x5NENPXZz0kDX0hgbZqld+qRqxw+lAHlQ1a6hekTz+Yg4Jg/VKt9nG9miri9NdsH3N/gPLPM625ClPw6ecbl9HRUoTke9j06xnbTo5i5N7CUqKd9mO2lhc8xKk1zYWhzVi3NXDHQtjXEBVayznbSwk+alSS48ro//38V0LY1xAR6esZ208Ptbkia5EMxgEjfYTlrH3+DxWOKnbCetIpskXAVtm6RdmZAmuRCuguVbbCctcwjybNQhDGJ5962NmgSDG9LkPMIYjF+zjWyZ05cwOY8QBukxj21kix+3dsQAFooaxOb4pl+UBtiGXVjmKSmIjcIG2+VJTu8mfKNVKVAWPzeH9de1ywa6lsZkgRVb5rTu0lvD57CrenNowmMep+1OPTh2/gpzNvbYNHn8XZ2Lg5ymmOjcioArUiIfTKxQf30cFpZkukg1qZV0vVu7FfUqauZoRetI2JGMHIbGoGKv6MTm3OdCie6bdIaAiTpMzNOznMFc4z18pr9UT/LwvvpKq1T6AzUGR24Nov/ZAAAAAElFTkSuQmCC"> -->
+          </td>
+          <td>
+            <ul class="list-group" *ngIf="spec.currentValues">
+              <li class="list-group-item" *ngIf="spec.currentValues._activeValue">Active Value: {{spec.currentValues._activeValue}}</li>
+              <li class="list-group-item" *ngIf="spec.currentValues._valueType">Value Type: {{spec.currentValues._valueType}}</li>
+              <li class="list-group-item" *ngIf="spec.currentValues._activeTime">@Time: {{spec.currentValues._activeTime}}</li>
+              <li class="list-group-item" *ngIf="spec.currentValues._nameAlias">Name Alias: {{spec.currentValues._nameAlias}}</li>
+              <li class="list-group-item" *ngIf="spec.currentValues._history">History Value: {{spec.currentValues._history}}</li>
+            </ul>
+          </td>
+          <td>
+            <ul class="list-group">
+              <li class="list-group-item" *ngFor="let failure of spec.failResults">{{operationFailureStatements(spec.code, spec.attributeName, failure.matcherName, failure.actual, failure.expected)}}
+              </li>
+            </ul>
+          </td>
+          <td>{{spec.atTime | date:'hh:mm:ss a'}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div *ngIf="metadata.running ==='forcefully_closed'">
+  <h1 class="d-flex justify-content-center"><i>"{{failureReason[0]}}{{failureReasonGeneration()}}"</i></h1>
+  <h3 class="d-flex justify-content-center">- Please Do a restart</h3>
+  <h5 class="d-flex justify-content-center"><i>with the necessary corrections</i></h5>
+</div>
+<loader *ngIf="(!metadata.finishedAt) && (metadata.running !=='forcefully_closed')"></loader>

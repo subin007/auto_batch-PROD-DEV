@@ -1,0 +1,17 @@
+{
+  "name": "meanauthapp",
+  "version": "1.0.0",
+  "description": "Singularity",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "body-parser": "*",
+    "cors": "*",
+    "express": "*",
+    "node-cmd": "^3.0.0"
+  },
+  "author": "",
+  "license": "MIT"
+}

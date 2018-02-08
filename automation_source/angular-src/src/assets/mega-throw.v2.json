@@ -1,0 +1,92 @@
+{
+  "metadata": {
+    "startedAt": 1516096794312,
+    "finishedAt": 1516096838877,
+    "running": false
+  },
+  "initials": {
+    "loginOne": true,
+    "loginTwo": true,
+    "saidClaimed": true,
+    "deviceOnline": true
+  },
+  "specSprint": [
+    {
+      "testcaseName": "Convect_Bake",
+      "attributeName": "XCat_RemoteSetRemoteControlEnable",
+      "code": "sgv",
+      "duration": 14787,
+      "currentValues": {
+        "_activeValue": "1",
+        "_valueType": "Boolean",
+        "_activeTime": "Jan 16, 2018 9:24:35 AM",
+        "_nameAlias": "17301505",
+        "_history": null
+      },
+      "focusedExpectation": 1,
+      "failResults": [],
+      "passResults": 2,
+      "atTime": 1516096832288
+    },
+    {
+      "testcaseName": "Convect_Bake",
+      "attributeName": "Mwo_OperationStatusDoorOpen",
+      "code": "sgv",
+      "duration": 14787,
+      "currentValues": {
+        "_activeValue": "0",
+        "_valueType": "Boolean",
+        "_activeTime": "Jan 16, 2018 8:32:55 AM",
+        "_nameAlias": "67305474",
+        "_history": null
+      },
+      "focusedExpectation": 0,
+      "failResults": [],
+      "passResults": 2,
+      "atTime": 1516096833125
+    },
+    {
+      "testcaseName": "Convect_Bake",
+      "attributeName": "Mwo_ModeStatusIdle",
+      "code": "sgv",
+      "duration": 14787,
+      "currentValues": {
+        "_activeValue": "0",
+        "_valueType": "Boolean",
+        "_activeTime": "Jan 16, 2018 9:26:46 AM",
+        "_nameAlias": "184614913",
+        "_history": null
+      },
+      "focusedExpectation": 45,
+      "failResults": [
+        {
+          "matcherName": "toEqual",
+          "message": "Expected '0' to equal '45'.",
+          "stack": "Error: Failed expectation\n    at UserContext.it (D:\\Subin\\WorkStorm\\Whirlpool\\mega-throw\\src\\assets\\spec.sep.p2.js:143:74)\n    at C:\\Users\\SEBASS\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\jasminewd2\\index.js:112:25\n    at new ManagedPromise (C:\\Users\\SEBASS\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\selenium-webdriver\\lib\\promise.js:1077:7)\n    at ControlFlow.promise (C:\\Users\\SEBASS\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\selenium-webdriver\\lib\\promise.js:2505:12)\n    at schedulerExecute (C:\\Users\\SEBASS\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\jasminewd2\\index.js:95:18)\n    at TaskQueue.execute_ (C:\\Users\\SEBASS\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\selenium-webdriver\\lib\\promise.js:3084:14)\n    at TaskQueue.executeNext_ (C:\\Users\\SEBASS\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\selenium-webdriver\\lib\\promise.js:3067:27)\n    at asyncRun (C:\\Users\\SEBASS\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\selenium-webdriver\\lib\\promise.js:2974:25)\n    at C:\\Users\\SEBASS\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\selenium-webdriver\\lib\\promise.js:668:7",
+          "passed": false,
+          "expected": "45",
+          "actual": "0"
+        }
+      ],
+      "passResults": 1,
+      "atTime": 1516096834380
+    },
+    {
+      "testcaseName": "Convect_Bake",
+      "attributeName": "Mwo_DisplayStatusDisplayTemp",
+      "code": "dgr",
+      "duration": 14787,
+      "currentValues": {
+        "_activeValue": "300",
+        "_valueType": "BEIntegerUnsigned16Bit",
+        "_activeTime": "Jan 16, 2018 9:28:59 AM",
+        "_nameAlias": "67239937",
+        "_history": null
+      },
+      "focusedExpectation": "260 to 370",
+      "failResults": [],
+      "passResults": 2,
+      "atTime": 1516096835594
+    }
+  ]
+}

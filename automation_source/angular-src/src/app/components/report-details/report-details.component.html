@@ -1,0 +1,35 @@
+<div class="navbar fixed-at-top navbar-expand-lg navbar-dark bg-niceblue">
+  <span class="boxer bg-clouds mr-5 pl-2">
+    <a class="navbar-brand" style="color:#2980b9 !important; text-align:center; " href="#">KVP Automation</a>
+  </span>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <span class="boxer bg-belize_hole">
+        <li class="nav-item active">
+          <a class="nav-link " href="#">Started at: {{metadata.startedAt | date: 'EEEE, MMM d, y @ h:mm:ss a'}}
+            <br>
+            <span *ngIf="metadata.finishedAt !== null">Finished at: {{metadata.finishedAt | date: 'EEEE, MMM d, y @ h:mm:ss a'}}
+            </span>
+          </a>
+        </li>
+      </span>
+      <span class="boxer bg-belize_hole mx-1">
+
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Initial Conditions: {{initialConditionsVerification()}}</a>
+        </li>
+      </span>
+      <span class="boxer bg-belize_hole" style="border-radius: 0.25rem 0 0 0.25rem;">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Total Specs Ran: {{specSprint.length === 0 ? 0 : specSprint.length}}
+            <br> Failed Specs: {{failCount}}</a>
+        </li>
+      </span>
+      <span class="boxer bg-belize_hole" style="border-radius: 0 0.25rem 0.25rem 0;">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Passed Specs: {{passCount}}</a>
+        </li>
+      </span>
+    </ul>
+  </div>
+</div>

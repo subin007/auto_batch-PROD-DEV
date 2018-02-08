@@ -1,0 +1,114 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:100,400,700);
+.buttonChest li {
+  display: inline-block;
+  position: relative;
+  min-height: 80px;
+  margin: 20px;
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.buttonChest li .clicks {
+  position: absolute;
+  text-align: center;
+  font-family: "Lato", sans-serif;
+  color: #4d4d4d;
+  text-transform: uppercase;
+  width: 100%;
+  top: 16px;
+  z-index: -1;
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.buttonChest li:hover .clicks {
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+  background: #fff;
+  top: 56px;
+  position: absolute;
+  padding-top: 4px;
+  padding-bottom: 5px;
+}
+
+.buttonChest li:hover {
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+  -webkit-transform: scale(0.9) rotate(3deg);
+  -moz-transform: scale(0.9) rotate(3deg);
+  -ms-transform: scale(0.9) rotate(3deg);
+  -o-transform: scale(0.9) rotate(3deg);
+  transform: scale(0.9) rotate(3deg);
+}
+
+.button {
+  font-family: "Lato", sans-serif;
+  font-size: 1.8em;
+  color: #fff;
+  font-weight: 400;
+  text-transform: uppercase;
+  padding: 10px 40px 10px 40px;
+  cursor: pointer;
+  box-shadow: 0 4px 5px 0 rgba(50, 50, 50, 0.75);
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.button:hover {
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+  box-shadow: none;
+  border-bottom: solid 8px #fff;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+@media only screen and (max-width: 762px) {
+  .headText h1 {
+    font-size: 4em;
+  }
+}
+
+.navy {
+  background: #2c3e50;
+}
+
+.red {
+  background: #e74c3c;
+}
+
+.ocean {
+  background: #3498db;
+}
+
+.api {
+  background: #2980b9;
+}
+
+.chalk {
+  background: #ecf0f1;
+  color: #4d4d4d;
+}
+
+.drab {
+  background: #3f4036;
+}
+
+.teal {
+  background: #8da681;
+}
+
+.jason {
+  background: #bf2806;
+}
+
+.darkRed {
+  background: #8c1d04;
+}
+
