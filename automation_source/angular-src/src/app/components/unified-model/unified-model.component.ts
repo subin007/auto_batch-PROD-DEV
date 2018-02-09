@@ -67,11 +67,11 @@ export class UnifiedModelComponent implements OnInit {
       this.displayListRefresh = false;
       localStorage.setItem('displayListRefresh', JSON.stringify(false));
     }, err => {
-      // console.log('Hit in');
-      // console.log(err);
-      // this.displayListRefresh = false;
-      // localStorage.setItem('displayListRefresh', JSON.stringify(false));
-      return err;
+      console.log('Hit in');
+      console.log(err);
+      this.displayListRefresh = false;
+      localStorage.setItem('displayListRefresh', JSON.stringify(false));
+      // return err;
     });
   }
   fetchReportStatus() {
