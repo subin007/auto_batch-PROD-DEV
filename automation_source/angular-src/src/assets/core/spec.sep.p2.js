@@ -94,7 +94,9 @@ describe('Device Suite', function () {
                                     el.inputAreaForSingle.sendKeys(singleAttrTestcase.feedValue);
                                     el.saveIcon.click();
                                 }
-                                activeTimeForDependentAttr = (el.activeTimeV3).getText();
+                                el.activeTimeV3.getText().then(function (activeTime) {
+                                    activeTimeForDependentAttr = activeTime.toString();
+                                });
                                 var sleepTime = (singleAttrTestcase.wait !== null) ? (1000 * (singleAttrTestcase.wait)) : (1000 * (data.config.defaultWaitTime));
                                 browser.sleep(sleepTime);
                                 if (singleAttrTestcase.nameAlias !== null) {
@@ -247,10 +249,12 @@ describe('Device Suite', function () {
                                 currentValuesForDependent._activeTime = activeTime;
                             });
                             if (attribute.checkFor == "activeTime") {
-                                expect(el.activeTimeV3.getText()).toEqual(activeTimeForDependentAttr);
+                                el.activeTimeV3.getText().then(function (activeTime) {
+                                    expect(activeTime).toEqual(activeTimeForDependentAttr);
+                                });                              
                                 let sleepTime = (attribute.wait !== null) ? (1000 * (attribute.wait)) : 200;
                                 browser.sleep(sleepTime);
-                                mega.testCaseResultV2(testsuite.testCaseName, attribute.attrName, currentValuesForDependent, "dgt", activeTimeForDependentAttr);
+                                mega.testCaseResultV2(testsuite.testCaseName, attribute.attrName, currentValuesForDependent, "dgt", activeTimeForDependentAttr.toString());
                             }
                             if (attribute.checkFor == "activeValue") {
                                 expect(el.activeValueV3.getText()).toEqual((attribute.value).toString());
