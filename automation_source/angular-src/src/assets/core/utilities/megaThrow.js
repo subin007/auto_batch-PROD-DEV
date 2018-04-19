@@ -1,4 +1,5 @@
 var fs = require('fs');
+var path = require('path')
 var jsonfile = require('jsonfile');
 var megaThrow = function () {
     // var specWrapUp = function (testcaseName, attributeName, code) {
@@ -51,12 +52,12 @@ var megaThrow = function () {
     var updateData = function (loc, data) {
         jsonfile.writeFileSync(loc, data, { spaces: 2, EOL: '\r\n' });
     };
-    var loc = `./outputs/${browser.params.filename}`;
+    var loc = `./outputs/${path.basename(browser.params.filename)}`;
 
 
     beforeAll(function () {
-        var loc = `./outputs/${browser.params.filename}`;
-        var obj = fetchData(loc, function(obj){
+        var loc = `./outputs/${path.basename(browser.params.filename)}`;
+        var obj = fetchData(loc, function (obj) {
             var date = new Date();
             var startedAt = date.getTime();
             obj.metadata.startedAt = startedAt;
@@ -72,7 +73,7 @@ var megaThrow = function () {
 
     });
     afterAll(function () {
-        var loc = `./outputs/${browser.params.filename}`;
+        var loc = `./outputs/${path.basename(browser.params.filename)}`;
         var obj = fetchData(loc, function (obj) {
             var date = new Date();
             var finishedAt = date.getTime();
@@ -84,23 +85,23 @@ var megaThrow = function () {
     });
     this.loginOneValidation = function () {
         jasmine.getEnv().addReporter(new function () {
-            var loc = `./outputs/${browser.params.filename}`;
-            var obj = fetchData(loc,(obj)=>{
-            this.specDone = function (result) {
-                if (result.failedExpectations.length > 0) {
-                    obj.initials.loginOne = false;
-                    updateData(loc, obj);
-                } else {
-                    obj.initials.loginOne = true;
-                    updateData(loc, obj);
-                }
-            };
+            var loc = `./outputs/${path.basename(browser.params.filename)}`;
+            var obj = fetchData(loc, (obj) => {
+                this.specDone = function (result) {
+                    if (result.failedExpectations.length > 0) {
+                        obj.initials.loginOne = false;
+                        updateData(loc, obj);
+                    } else {
+                        obj.initials.loginOne = true;
+                        updateData(loc, obj);
+                    }
+                };
             });
         });
     };
     this.loginTwoValidation = function () {
         jasmine.getEnv().addReporter(new function () {
-            var loc = `./outputs/${browser.params.filename}`;
+            var loc = `./outputs/${path.basename(browser.params.filename)}`;
             var obj = fetchData(loc, (obj) => {
                 this.specDone = function (result) {
                     if (result.failedExpectations.length > 0) {
@@ -117,7 +118,7 @@ var megaThrow = function () {
 
     this.saidClaimValidation = function () {
         jasmine.getEnv().addReporter(new function () {
-            var loc = `./outputs/${browser.params.filename}`;
+            var loc = `./outputs/${path.basename(browser.params.filename)}`;
             var obj = fetchData(loc, (obj) => {
                 this.specDone = function (result) {
                     if (result.failedExpectations.length > 0) {
@@ -134,7 +135,7 @@ var megaThrow = function () {
 
     this.deviceOnlineValidation = function () {
         jasmine.getEnv().addReporter(new function () {
-            var loc = `./outputs/${browser.params.filename}`;
+            var loc = `./outputs/${path.basename(browser.params.filename)}`;
             var obj = fetchData(loc, (obj) => {
                 this.specDone = function (result) {
                     if (result.failedExpectations.length > 0) {
@@ -162,7 +163,7 @@ var megaThrow = function () {
 
     this.testCaseResultV2 = function (testcaseName, attributeName, currentValues, code, focusedExpectation) {
         jasmine.getEnv().addReporter(new function () {
-            var loc = `./outputs/${browser.params.filename}`;
+            var loc = `./outputs/${path.basename(browser.params.filename)}`;
             fetchData(loc, (obj) => {
                 // Verify whether the Pre conditiond are met, before running the first test
                 if (obj.initials.deviceOnline === false) { browser.close().then(function () { obj.metadata.running = "forcefully_closed"; jsonfile.writeFileSync(loc, obj, { spaces: 2, EOL: '\r\n' }); process.exit(); }); }
