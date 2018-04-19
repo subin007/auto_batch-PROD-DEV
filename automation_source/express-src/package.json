@@ -10,7 +10,8 @@
     "body-parser": "*",
     "cors": "*",
     "express": "*",
-    "node-cmd": "^3.0.0"
+    "node-cmd": "^3.0.0",
+    "walker": "^1.0.7"
   },
   "author": "",
   "license": "MIT"
