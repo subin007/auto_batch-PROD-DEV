@@ -8,7 +8,7 @@ import { ResultService } from '../../services/result.service';
   styleUrls: ['./unified-model.component.css']
 })
 export class UnifiedModelComponent implements OnInit {
-  inputs; filename; showIcon; isPending; reportStatus = []; displayListRefresh = true;
+  inputs; directoryList; filename; showIcon; isPending; reportStatus = []; displayListRefresh = true;
   constructor(private action: ActionService, private resultService: ResultService) { }
   getInputsArray() {
     return new Promise((resolve, reject) => {
@@ -35,7 +35,14 @@ export class UnifiedModelComponent implements OnInit {
         return err;
       });
   }
-
+  getDirectoryListArray() {
+    this.action.getDirectoryList().subscribe(data => {
+      this.directoryList = data;
+    },
+      err => {
+        return err;
+      });
+  }
   getReportStatusV2(filename: string) {
     let running;
     let finishedAt: any;
@@ -107,6 +114,7 @@ export class UnifiedModelComponent implements OnInit {
     //   this.fetchReportStatus();
     // });
     this.getInputsArrayV2();
+    this.getDirectoryListArray()
   }
 
 }

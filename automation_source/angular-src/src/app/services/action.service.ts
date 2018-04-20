@@ -26,7 +26,11 @@ export class ActionService {
       map(data => data.inputFiles)
     );
   }
-
+  getDirectoryList(): Observable<any> {
+    return this.http.get<any>(`${environment.url}/actions/directorylist`).pipe(
+      map(data => data.directoryList)
+    );
+  }
   startSequentialExecution(): Observable<any> {
     return this.http.get<any>(`${environment.url}/actions/start/execution`).pipe(
       map(data => JSON.parse(data))

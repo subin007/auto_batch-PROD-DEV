@@ -28,7 +28,7 @@
       <tbody>
         <tr *ngFor="let file of inputs; index as i">
           <th scope="row">{{i + 1}}</th>
-          <td>{{file}}</td>
+          <td>{{directoryList[i]}}</td>
           <td style="cursor: pointer;" [routerLink]="['report', file]" *ngIf="reportStatus[i].status === 'completed' || reportStatus[i].status === 'running' || reportStatus[i].status === 'forcefully_closed'">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
               stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">

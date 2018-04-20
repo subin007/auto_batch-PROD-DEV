@@ -21,7 +21,10 @@ router.get("/inputlist", (req, res, next) => {
     var exec_info = JSON.parse(fs.readFileSync("./datastore/execution_info.json"));
     res.json({ inputFiles: exec_info.inputFiles});
 });
-
+router.get("/directorylist", (req, res, next) => {
+    var exec_info = JSON.parse(fs.readFileSync("./datastore/execution_info.json"));
+    res.json({ directoryList: exec_info.directoryList });
+});
 router.get("/start/execution",(req, res, next)=>{
     cmd.get(
         `call start_start_seq_execution_v2.bat`,

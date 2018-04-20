@@ -7,7 +7,8 @@ var secondLine = `\n(for %%a in (%list%) do (`;
 var thirdLine = `\nprotractor conf.js --params.filename=%%a`;
 var fourthLine = `\n))`;
 var executionObj = {
-    inputFiles: []
+    inputFiles: [],
+    directoryList: []
 };
 const megaThrowObj = {
     metadata: {
@@ -83,6 +84,7 @@ Walker(destination)
             let res = fisrtLine.concat(newVal);
             fisrtLine = res;
             executionObj.inputFiles.push(directoryFilePathBasename);
+            executionObj.directoryList.push(directoryFilePath);
             fs.writeFileSync(`../angular-src/src/assets/core/outputs/${directoryFilePathBasename}`, JSON.stringify(megaThrowObj));
         }
         console.log('Got file: ' + path.relative(destination, file) + 'and basename is ' + path.basename(path.relative(destination, file)))
